@@ -14,6 +14,7 @@ public class CameraManager : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown stickerDropdown; //Sticker choices
     [SerializeField] private RawImage stickerImage; //Image that holds the current sticker
+    [SerializeField] private GameObject[] arStickers; //Image that holds the current sticker
     [SerializeField] private Texture2D[] stickerTextures;
     [SerializeField] private Camera[] cameraToFreeze;
     [SerializeField] private DOTweenAnimation[] movingFrames;
@@ -78,39 +79,42 @@ public class CameraManager : MonoBehaviour
 
     private void ChangeSticker(int optionIndex)
     {
-        // Check if the option index is within the range of the textures array
-        if (optionIndex > 0 && optionIndex < stickerTextures.Length)
-        {
-            stickerImage.enabled = true;
-            // Set the sticker image's texture to the selected option's texture
-            stickerImage.texture = stickerTextures[optionIndex];
-        }
-        else if(optionIndex == 0)
-        {
-            stickerImage.enabled = false;
-        }
+        for (int i = 0; i < arStickers.Length; i++) 
+            arStickers[i].gameObject.SetActive(i == optionIndex);
 
-        // Get the screen width and height
-        float screenWidth = Screen.width;
-        float screenHeight = Screen.height;
+        // // Check if the option index is within the range of the textures array
+        // if (optionIndex > 0 && optionIndex < stickerTextures.Length)
+        // {
+        //     stickerImage.enabled = true;
+        //     // Set the sticker image's texture to the selected option's texture
+        //     stickerImage.texture = stickerTextures[optionIndex];
+        // }
+        // else if(optionIndex == 0)
+        // {
+        //     stickerImage.enabled = false;
+        // }
 
-        // Set the padding value
-        float padding = 100f;
+        // // Get the screen width and height
+        // float screenWidth = Screen.width;
+        // float screenHeight = Screen.height;
 
-        // Get the stickerImage's width and height
-        float stickerImageWidth = stickerImage.rectTransform.rect.width;
-        float stickerImageHeight = stickerImage.rectTransform.rect.height;
+        // // Set the padding value
+        // float padding = 100f;
 
-        // Calculate the maximum x and y positions within the screen boundaries
-        float maxX = screenWidth - stickerImageWidth - padding * 2;
-        float maxY = screenHeight - stickerImageHeight - padding * 2;
+        // // Get the stickerImage's width and height
+        // float stickerImageWidth = stickerImage.rectTransform.rect.width;
+        // float stickerImageHeight = stickerImage.rectTransform.rect.height;
 
-        // Calculate the random position within the adjusted screen boundaries
-        float randomX = UnityEngine.Random.Range(padding, maxX);
-        float randomY = UnityEngine.Random.Range(padding, maxY);
+        // // Calculate the maximum x and y positions within the screen boundaries
+        // float maxX = screenWidth - stickerImageWidth - padding * 2;
+        // float maxY = screenHeight - stickerImageHeight - padding * 2;
 
-        // Set the stickerImage's position to the random position
-        stickerImage.rectTransform.anchoredPosition = new Vector2(randomX, randomY);
+        // // Calculate the random position within the adjusted screen boundaries
+        // float randomX = UnityEngine.Random.Range(padding, maxX);
+        // float randomY = UnityEngine.Random.Range(padding, maxY);
+
+        // // Set the stickerImage's position to the random position
+        // stickerImage.rectTransform.anchoredPosition = new Vector2(randomX, randomY);
     }
 
     public void MoveFrames()
@@ -167,7 +171,6 @@ public class CameraManager : MonoBehaviour
             Debug.Log("Screenshot download failed: " + webRequest.error);
         }
     }
-
 
 }
 
