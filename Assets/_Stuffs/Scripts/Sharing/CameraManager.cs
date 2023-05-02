@@ -1,44 +1,47 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
+using System.Collections;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using TMPro;
-
+using DG.Tweening;
 
 public class CameraManager : MonoBehaviour
 {
-    [SerializeField]private Camera[] cameraToFreeze;
+    [SerializeField] private TMP_Dropdown stickerDropdown; //Sticker choices
+    [SerializeField] private RawImage stickerImage; //Image that holds the current sticker
+    [SerializeField] private Texture2D[] stickerTextures;
+    [SerializeField] private Camera[] cameraToFreeze;
+    [SerializeField] private DOTweenAnimation[] movingFrames;
+    [SerializeField] private GameObject[] movingObjects;
+    [SerializeField] private List<AnimationObjectClass> animObjectList;
     private ButtonManager buttonManager;
     [SerializeField] Canvas uiCanvas;
     [SerializeField] GameObject buttonHandler;
     [SerializeField] GameObject downloadButton;
-
     public TMP_Text downloadLinkText;
     public bool takingScreenshot = false;
     
-    //public string screenshotName = "screenshot.png";
     public string downloadButtonLabel = "Download Screenshot";
-
     public string screenshotName = "Screenshot"; //remove later
-
     private string screenshotPath;
     private string downloadURL;
 
     private Texture2D texture;
-    [SerializeField]private RawImage frozenImage;
 
     void Start()
     {
+        ChangeSticker(0);
+        // Set the initial texture based on the first option
+        stickerImage.enabled = false;
 
-    }
+        // Add a listener to the dropdown to handle option changes
+        stickerDropdown.onValueChanged.AddListener(ChangeSticker);
 
-    public void StartRecording()
-    {
         
     }
 
@@ -73,11 +76,77 @@ public class CameraManager : MonoBehaviour
         StartCoroutine(DownloadScreenshotFile());
     }
 
-    public void TwitterShare()
+    private void ChangeSticker(int optionIndex)
     {
-        StartCoroutine(PostTweet());
+        // Check if the option index is within the range of the textures array
+        if (optionIndex > 0 && optionIndex < stickerTextures.Length)
+        {
+            stickerImage.enabled = true;
+            // Set the sticker image's texture to the selected option's texture
+            stickerImage.texture = stickerTextures[optionIndex];
+        }
+        else if(optionIndex == 0)
+        {
+            stickerImage.enabled = false;
+        }
+
+        // Get the screen width and height
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+
+        // Set the padding value
+        float padding = 100f;
+
+        // Get the stickerImage's width and height
+        float stickerImageWidth = stickerImage.rectTransform.rect.width;
+        float stickerImageHeight = stickerImage.rectTransform.rect.height;
+
+        // Calculate the maximum x and y positions within the screen boundaries
+        float maxX = screenWidth - stickerImageWidth - padding * 2;
+        float maxY = screenHeight - stickerImageHeight - padding * 2;
+
+        // Calculate the random position within the adjusted screen boundaries
+        float randomX = UnityEngine.Random.Range(padding, maxX);
+        float randomY = UnityEngine.Random.Range(padding, maxY);
+
+        // Set the stickerImage's position to the random position
+        stickerImage.rectTransform.anchoredPosition = new Vector2(randomX, randomY);
     }
 
+    public void MoveFrames()
+    {
+        Debug.Log("test");
+        for (int x = 0; x < animObjectList.Count; x++)
+        {
+            if (animObjectList[x].temporaryParent.parent.gameObject.activeSelf)
+            {
+                animObjectList[x].moveDownParent.gameObject.SetActive(true);
+                for (int i = 0; i < animObjectList[x].childObjects.Length; i++)
+                {
+                    animObjectList[x].childObjects[i].transform.parent = animObjectList[x].moveDownParent;
+                }
+            }
+            animObjectList[x].moveUpParent.gameObject.SetActive(false);
+        }
+
+    }
+
+    public void ResetFrames()
+    {
+        for (int x = 0; x < animObjectList.Count; x++)
+        {
+            if (animObjectList[x].temporaryParent.parent.gameObject.activeSelf)
+            {
+                animObjectList[x].moveUpParent.gameObject.SetActive(true);
+                for (int i = 0; i < animObjectList[x].childObjects.Length; i++)
+                {
+                    animObjectList[x].childObjects[i].transform.parent = animObjectList[x].moveUpParent;
+                }
+            }
+            animObjectList[x].moveDownParent.gameObject.SetActive(false);
+        }
+        
+    }
     private IEnumerator DownloadScreenshotFile() //Needs permission to download or a server to handle
     {
         UnityWebRequest webRequest = UnityWebRequest.Get(downloadURL);
@@ -99,19 +168,14 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    private IEnumerator PostTweet()
-    {
-        yield return new WaitForEndOfFrame(); //Needs permission to share
-    }
 
-    private IEnumerator PostFacebook()
-    {
-        yield return new WaitForEndOfFrame(); //Needs permission to share
-    }
+}
 
-    private IEnumerator PostInstagram()
-    {
-        yield return new WaitForEndOfFrame(); //Needs permission to share
-    }
-
+[Serializable]
+public class AnimationObjectClass
+{
+    public Transform temporaryParent;
+    public Transform moveDownParent;
+    public Transform moveUpParent;  
+    public GameObject[] childObjects;
 }

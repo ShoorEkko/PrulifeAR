@@ -5295,14 +5295,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Exception_GetClassName_m4070C3FA2A8
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ListDictionaryInternal__ctor_mB7A6828B81425B52BE5C3F967471CFA703465FB0 (ListDictionaryInternal_tC5022F2C249477F5A90382A5A71661745C723123* __this, const RuntimeMethod* method) ;
 // System.Type System.Exception::GetType()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Type_t* Exception_GetType_mAD1230385BDC06119C339187CC37F22B6A79CF09 (Exception_t* __this, const RuntimeMethod* method) ;
+// System.Void System.Diagnostics.StackTrace::.ctor(System.Exception,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void StackTrace__ctor_m9BE489F499935CFA9AD4154B18A3AB35C52886DF (StackTrace_t7C150C7C14136F985311A83A93524B1019F70853* __this, Exception_t* ___e0, bool ___fNeedFileInfo1, const RuntimeMethod* method) ;
 // System.String System.Exception::GetStackTrace(System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Exception_GetStackTrace_m82E62621A0DB19C4B787314387AB85F612AF479C (Exception_t* __this, bool ___needFileInfo0, const RuntimeMethod* method) ;
 // System.String System.Exception::StripFileInfo(System.String,System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Exception_StripFileInfo_m8A50F7141523354E05B78259086F1B9E551AFD95 (Exception_t* __this, String_t* ___stackTrace0, bool ___isRemoteStackTrace1, const RuntimeMethod* method) ;
 // System.String System.Environment::GetStackTrace(System.Exception,System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Environment_GetStackTrace_m4EAE34F63F727FCECFFF4BAC4514B9374E94A468 (Exception_t* ___e0, bool ___needFileInfo1, const RuntimeMethod* method) ;
-// System.Void System.Diagnostics.StackTrace::.ctor(System.Exception,System.Boolean)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void StackTrace__ctor_m9BE489F499935CFA9AD4154B18A3AB35C52886DF (StackTrace_t7C150C7C14136F985311A83A93524B1019F70853* __this, Exception_t* ___e0, bool ___fNeedFileInfo1, const RuntimeMethod* method) ;
 // System.Boolean System.Reflection.MethodBase::op_Inequality(System.Reflection.MethodBase,System.Reflection.MethodBase)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool MethodBase_op_Inequality_mB7E4A01A8827865E97756445895D201687C09BB5 (MethodBase_t* ___left0, MethodBase_t* ___right1, const RuntimeMethod* method) ;
 // System.String System.Reflection.AssemblyName::get_Name()
@@ -10391,6 +10391,42 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Exception_t* Exception_get_InnerException_m0C
 		return L_0;
 	}
 }
+// System.Reflection.MethodBase System.Exception::get_TargetSite()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MethodBase_t* Exception_get_TargetSite_m0CE79BBF864CCEA96B72ED52EC66753CFBE5ED6A (Exception_t* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&StackTrace_t7C150C7C14136F985311A83A93524B1019F70853_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	StackTrace_t7C150C7C14136F985311A83A93524B1019F70853* V_0 = NULL;
+	{
+		StackTrace_t7C150C7C14136F985311A83A93524B1019F70853* L_0 = (StackTrace_t7C150C7C14136F985311A83A93524B1019F70853*)il2cpp_codegen_object_new(StackTrace_t7C150C7C14136F985311A83A93524B1019F70853_il2cpp_TypeInfo_var);
+		StackTrace__ctor_m9BE489F499935CFA9AD4154B18A3AB35C52886DF(L_0, __this, (bool)1, NULL);
+		V_0 = L_0;
+		StackTrace_t7C150C7C14136F985311A83A93524B1019F70853* L_1 = V_0;
+		int32_t L_2;
+		L_2 = VirtualFuncInvoker0< int32_t >::Invoke(4 /* System.Int32 System.Diagnostics.StackTrace::get_FrameCount() */, L_1);
+		if ((((int32_t)L_2) <= ((int32_t)0)))
+		{
+			goto IL_001e;
+		}
+	}
+	{
+		StackTrace_t7C150C7C14136F985311A83A93524B1019F70853* L_3 = V_0;
+		StackFrame_tB901270D6679ED5D24D872C25D4AD053F22F3443* L_4;
+		L_4 = VirtualFuncInvoker1< StackFrame_tB901270D6679ED5D24D872C25D4AD053F22F3443*, int32_t >::Invoke(5 /* System.Diagnostics.StackFrame System.Diagnostics.StackTrace::GetFrame(System.Int32) */, L_3, 0);
+		MethodBase_t* L_5;
+		L_5 = VirtualFuncInvoker0< MethodBase_t* >::Invoke(7 /* System.Reflection.MethodBase System.Diagnostics.StackFrame::GetMethod() */, L_4);
+		return L_5;
+	}
+
+IL_001e:
+	{
+		return (MethodBase_t*)NULL;
+	}
+}
 // System.String System.Exception::get_StackTrace()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Exception_get_StackTrace_m601D1BDBA58B7BAB3B750ABC5E72C9449F6FD58E (Exception_t* __this, const RuntimeMethod* method) 
 {
@@ -10771,7 +10807,7 @@ IL_0028:
 	}
 	{
 		String_t* L_7;
-		L_7 = VirtualFuncInvoker0< String_t* >::Invoke(9 /* System.String System.Exception::get_Source() */, __this);
+		L_7 = VirtualFuncInvoker0< String_t* >::Invoke(10 /* System.String System.Exception::get_Source() */, __this);
 		__this->____source_12 = L_7;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->____source_12), (void*)L_7);
 	}
@@ -11054,7 +11090,7 @@ IL_0014:
 		String_t* L_1;
 		L_1 = Environment_get_NewLine_m8BF68A4EFDAFFB66500984CE779629811BA98FFF(NULL);
 		String_t* L_2;
-		L_2 = VirtualFuncInvoker0< String_t* >::Invoke(8 /* System.String System.Exception::get_StackTrace() */, __this);
+		L_2 = VirtualFuncInvoker0< String_t* >::Invoke(9 /* System.String System.Exception::get_StackTrace() */, __this);
 		int32_t L_3 = __this->____remoteStackIndex_9;
 		int32_t L_4 = L_3;
 		RuntimeObject* L_5 = Box(Int32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_il2cpp_TypeInfo_var, &L_4);
@@ -31567,43 +31603,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MonoCustomAttrs__cctor_mCF325F4F29BC6D88
 		((MonoCustomAttrs_t82687EDAB0600172AC29E4D085D603BAAAA5664A_StaticFields*)il2cpp_codegen_static_fields_for(MonoCustomAttrs_t82687EDAB0600172AC29E4D085D603BAAAA5664A_il2cpp_TypeInfo_var))->___DefaultAttributeUsage_2 = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&((MonoCustomAttrs_t82687EDAB0600172AC29E4D085D603BAAAA5664A_StaticFields*)il2cpp_codegen_static_fields_for(MonoCustomAttrs_t82687EDAB0600172AC29E4D085D603BAAAA5664A_il2cpp_TypeInfo_var))->___DefaultAttributeUsage_2), (void*)L_0);
 		return;
-	}
-}
-#ifdef __clang__
-#pragma clang diagnostic pop
-#endif
-#ifdef __clang__
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Winvalid-offsetof"
-#pragma clang diagnostic ignored "-Wunused-variable"
-#endif
-// System.Void System.MonoCustomAttrs/AttributeInfo::.ctor(System.AttributeUsageAttribute,System.Int32)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AttributeInfo__ctor_m7D6B46B3FD6AAF1105C9B75D29AF78969FF4D504 (AttributeInfo_t9AE048DE0EC4748F7D8722FA5D5C181F10033BFB* __this, AttributeUsageAttribute_t25F34EEA4F7DBA1A8EEFA0685E986AEECE621C49* ___usage0, int32_t ___inheritanceLevel1, const RuntimeMethod* method) 
-{
-	{
-		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
-		AttributeUsageAttribute_t25F34EEA4F7DBA1A8EEFA0685E986AEECE621C49* L_0 = ___usage0;
-		__this->____usage_0 = L_0;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->____usage_0), (void*)L_0);
-		int32_t L_1 = ___inheritanceLevel1;
-		__this->____inheritanceLevel_1 = L_1;
-		return;
-	}
-}
-// System.AttributeUsageAttribute System.MonoCustomAttrs/AttributeInfo::get_Usage()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AttributeUsageAttribute_t25F34EEA4F7DBA1A8EEFA0685E986AEECE621C49* AttributeInfo_get_Usage_m7D6DBBED669D0373EA82A8D5C61FC4DD36E5E0E6 (AttributeInfo_t9AE048DE0EC4748F7D8722FA5D5C181F10033BFB* __this, const RuntimeMethod* method) 
-{
-	{
-		AttributeUsageAttribute_t25F34EEA4F7DBA1A8EEFA0685E986AEECE621C49* L_0 = __this->____usage_0;
-		return L_0;
-	}
-}
-// System.Int32 System.MonoCustomAttrs/AttributeInfo::get_InheritanceLevel()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t AttributeInfo_get_InheritanceLevel_mE8AEA5CDD8B5AF19491D30431BB4A79EE43C3EBF (AttributeInfo_t9AE048DE0EC4748F7D8722FA5D5C181F10033BFB* __this, const RuntimeMethod* method) 
-{
-	{
-		int32_t L_0 = __this->____inheritanceLevel_1;
-		return L_0;
 	}
 }
 #ifdef __clang__

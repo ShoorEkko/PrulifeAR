@@ -7,6 +7,7 @@ ScriptsOnlyBuild:
     - BarGraph.VittorCloud.BarMouseClick
     - BarGraph.VittorCloud.BarProperty
     - BarGraphExample
+    - DG.Tweening.DOTweenAnimation
     - Graph.VittorCloud.GraphPoint
     - Outline
     Assembly-CSharp.dll:
@@ -17,10 +18,13 @@ ScriptsOnlyBuild:
     - SceneChanger
     - TakeSnap
     - ToggleSwitcher
+    DOTween.dll:
+    - DG.Tweening.Core.DOTweenSettings
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
     - TMPro.TMP_ColorGradient
+    - TMPro.TMP_Dropdown
     - TMPro.TMP_FontAsset
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
@@ -39,7 +43,12 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Mask
     - UnityEngine.UI.Outline
+    - UnityEngine.UI.RawImage
+    - UnityEngine.UI.ScrollRect
+    - UnityEngine.UI.Scrollbar
+    - UnityEngine.UI.Toggle
     Zappar.UAR.dll:
     - Zappar.ZapparCamera
     - Zappar.ZapparCameraBackground
@@ -49,6 +58,8 @@ ScriptsOnlyBuild:
     - Zappar.ZapparMultiFaceTrackingTarget
     - Zappar.ZapparUARSettings
   serializedClasses:
+    Assembly-CSharp:
+    - AnimationObjectClass
     Assembly-CSharp-firstpass:
     - BarGraph.VittorCloud.BarGraphDataSet
     - BarGraph.VittorCloud.OnBarHoverEnterEvent
@@ -56,11 +67,17 @@ ScriptsOnlyBuild:
     - BarGraph.VittorCloud.OnBarPointerDownEvent
     - BarGraph.VittorCloud.OnBarPointerUpEvent
     - BarGraph.VittorCloud.XYBarValues
+    DOTween:
+    - DG.Tweening.Core.DOTweenSettings/ModulesSetup
+    - DG.Tweening.Core.DOTweenSettings/SafeModeOptions
     Unity.TextMeshPro:
     - TMPro.FaceInfo_Legacy
     - TMPro.FontAssetCreationSettings
     - TMPro.KerningTable
     - TMPro.TMP_Character
+    - TMPro.TMP_Dropdown/DropdownEvent
+    - TMPro.TMP_Dropdown/OptionData
+    - TMPro.TMP_Dropdown/OptionDataList
     - TMPro.TMP_FontFeatureTable
     - TMPro.TMP_FontWeightPair
     - TMPro.TMP_GlyphAdjustmentRecord
@@ -89,7 +106,10 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.ColorBlock
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
     - UnityEngine.UI.Navigation
+    - UnityEngine.UI.ScrollRect/ScrollRectEvent
+    - UnityEngine.UI.Scrollbar/ScrollEvent
     - UnityEngine.UI.SpriteState
+    - UnityEngine.UI.Toggle/ToggleEvent
   methodsToPreserve:
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
@@ -103,6 +123,9 @@ ScriptsOnlyBuild:
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
+  - assembly: Assembly-CSharp
+    fullTypeName: CameraManager
+    methodName: MoveFrames
   - assembly: Assembly-CSharp
     fullTypeName: SceneChanger
     methodName: ChangeScene
@@ -218,69 +241,85 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1612}
+      Script: {instanceID: 1624}
     - Class: 114
-      Script: {instanceID: 1614}
+      Script: {instanceID: 1626}
     - Class: 114
-      Script: {instanceID: 1908}
+      Script: {instanceID: 1924}
     - Class: 114
-      Script: {instanceID: 2140}
+      Script: {instanceID: 2156}
     - Class: 114
-      Script: {instanceID: 2304}
+      Script: {instanceID: 2320}
     - Class: 114
-      Script: {instanceID: 2504}
+      Script: {instanceID: 2460}
     - Class: 114
-      Script: {instanceID: 2692}
+      Script: {instanceID: 2520}
     - Class: 114
-      Script: {instanceID: 2774}
+      Script: {instanceID: 2708}
     - Class: 114
-      Script: {instanceID: 3008}
+      Script: {instanceID: 2790}
     - Class: 114
-      Script: {instanceID: 3020}
+      Script: {instanceID: 2802}
     - Class: 114
-      Script: {instanceID: 3034}
+      Script: {instanceID: 3024}
     - Class: 114
-      Script: {instanceID: 3320}
+      Script: {instanceID: 3036}
     - Class: 114
-      Script: {instanceID: 3802}
+      Script: {instanceID: 3050}
     - Class: 114
-      Script: {instanceID: 4296}
+      Script: {instanceID: 3336}
     - Class: 114
-      Script: {instanceID: 4416}
+      Script: {instanceID: 3522}
     - Class: 114
-      Script: {instanceID: 4696}
+      Script: {instanceID: 3704}
     - Class: 114
-      Script: {instanceID: 4708}
+      Script: {instanceID: 3830}
     - Class: 114
-      Script: {instanceID: 5422}
+      Script: {instanceID: 4194}
     - Class: 114
-      Script: {instanceID: 5500}
+      Script: {instanceID: 4330}
     - Class: 114
-      Script: {instanceID: 5586}
+      Script: {instanceID: 4452}
     - Class: 114
-      Script: {instanceID: 5658}
+      Script: {instanceID: 4734}
     - Class: 114
-      Script: {instanceID: 5744}
+      Script: {instanceID: 4746}
     - Class: 114
-      Script: {instanceID: 6110}
+      Script: {instanceID: 5394}
     - Class: 114
-      Script: {instanceID: 6136}
+      Script: {instanceID: 5464}
     - Class: 114
-      Script: {instanceID: 6306}
+      Script: {instanceID: 5542}
     - Class: 114
-      Script: {instanceID: 6390}
+      Script: {instanceID: 5628}
     - Class: 114
-      Script: {instanceID: 6676}
+      Script: {instanceID: 5700}
     - Class: 114
-      Script: {instanceID: 6814}
+      Script: {instanceID: 5722}
     - Class: 114
-      Script: {instanceID: 6834}
+      Script: {instanceID: 5788}
     - Class: 114
-      Script: {instanceID: 8118}
+      Script: {instanceID: 6166}
     - Class: 114
-      Script: {instanceID: 24176}
+      Script: {instanceID: 6192}
     - Class: 114
-      Script: {instanceID: 24814}
+      Script: {instanceID: 6362}
+    - Class: 114
+      Script: {instanceID: 6446}
+    - Class: 114
+      Script: {instanceID: 6732}
+    - Class: 114
+      Script: {instanceID: 6744}
+    - Class: 114
+      Script: {instanceID: 6870}
+    - Class: 114
+      Script: {instanceID: 6890}
+    - Class: 114
+      Script: {instanceID: 6956}
+    - Class: 114
+      Script: {instanceID: 7924}
+    - Class: 114
+      Script: {instanceID: 8192}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -337,55 +376,55 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1612}
+      Script: {instanceID: 1624}
     - Class: 114
-      Script: {instanceID: 1614}
+      Script: {instanceID: 1626}
     - Class: 114
-      Script: {instanceID: 1616}
+      Script: {instanceID: 1628}
     - Class: 114
-      Script: {instanceID: 1644}
+      Script: {instanceID: 1656}
     - Class: 114
-      Script: {instanceID: 2774}
+      Script: {instanceID: 2790}
     - Class: 114
-      Script: {instanceID: 3008}
+      Script: {instanceID: 3024}
     - Class: 114
-      Script: {instanceID: 3034}
+      Script: {instanceID: 3050}
     - Class: 114
-      Script: {instanceID: 3320}
+      Script: {instanceID: 3336}
     - Class: 114
-      Script: {instanceID: 3802}
+      Script: {instanceID: 3830}
     - Class: 114
-      Script: {instanceID: 4696}
+      Script: {instanceID: 4734}
     - Class: 114
-      Script: {instanceID: 5422}
+      Script: {instanceID: 5464}
     - Class: 114
-      Script: {instanceID: 5478}
+      Script: {instanceID: 5520}
     - Class: 114
-      Script: {instanceID: 5500}
+      Script: {instanceID: 5542}
     - Class: 114
-      Script: {instanceID: 5586}
+      Script: {instanceID: 5628}
     - Class: 114
-      Script: {instanceID: 5658}
+      Script: {instanceID: 5700}
     - Class: 114
-      Script: {instanceID: 6110}
+      Script: {instanceID: 6166}
     - Class: 114
-      Script: {instanceID: 6136}
+      Script: {instanceID: 6192}
     - Class: 114
-      Script: {instanceID: 6306}
+      Script: {instanceID: 6362}
     - Class: 114
-      Script: {instanceID: 6390}
+      Script: {instanceID: 6446}
     - Class: 114
-      Script: {instanceID: 6676}
+      Script: {instanceID: 6732}
     - Class: 114
-      Script: {instanceID: 6814}
+      Script: {instanceID: 6870}
     - Class: 114
-      Script: {instanceID: 6834}
+      Script: {instanceID: 6890}
     - Class: 114
-      Script: {instanceID: 7070}
+      Script: {instanceID: 7138}
     - Class: 114
-      Script: {instanceID: 7924}
+      Script: {instanceID: 7996}
     - Class: 114
-      Script: {instanceID: 8118}
+      Script: {instanceID: 8192}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -657,7 +696,7 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
-      Hash: f763bfcb0ce8112c6a58769c399f7dfb
+      Hash: fea17556874ab7c54d781ef4f0fb11ad
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraManager
@@ -765,6 +804,12 @@ ScriptsOnlyBuild:
     className: UnityOnScrollMessageListener
   - hash:
       serializedVersion: 2
+      Hash: d72d48d3b89d0bf1c4ab1d27fabbae1a
+    assemblyName: Assembly-CSharp-firstpass.dll
+    namespaceName: DG.Tweening
+    className: DOTweenAnimation
+  - hash:
+      serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -817,6 +862,18 @@ ScriptsOnlyBuild:
     assemblyName: Zappar.UAR.dll
     namespaceName: Zappar.Obsolete
     className: ZapparFaceTrackingTarget
+  - hash:
+      serializedVersion: 2
+      Hash: 704dcd31abc789439bc3f3cd10b58c2b
+    assemblyName: DOTween.dll
+    namespaceName: DG.Tweening.Core
+    className: DOTweenComponent
+  - hash:
+      serializedVersion: 2
+      Hash: 23206d8cacf2b6e30fd52e948d6c73f5
+    assemblyName: DOTween.dll
+    namespaceName: DG.Tweening.Core
+    className: DOTweenSettings
   - hash:
       serializedVersion: 2
       Hash: 3cae62e09a50c5d5aae8d0536b3d8fde
@@ -1185,6 +1242,12 @@ ScriptsOnlyBuild:
     className: PanelEventHandler
   - hash:
       serializedVersion: 2
+      Hash: 792b5c9d895b924c9b1cc1da9b019e70
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FrameHandler
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -1219,6 +1282,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.State.dll
     namespaceName: Unity.VisualScripting
     className: StateGraphAsset
+  - hash:
+      serializedVersion: 2
+      Hash: b5fc3843e35dd6d09a719cb0d10ff4a5
+    assemblyName: DemiLib.dll
+    namespaceName: DG.DemiLib.External
+    className: DeHierarchyComponent
   - hash:
       serializedVersion: 2
       Hash: 5bb0c23ac2810973880e592724a69354
@@ -1345,6 +1414,24 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp-firstpass.dll
     namespaceName: 
     className: BarGraphExample
+  - hash:
+      serializedVersion: 2
+      Hash: 633b7a21a07e2e848df526bbef0edc40
+    assemblyName: DOTweenPro.dll
+    namespaceName: DG.Tweening
+    className: DOTweenPath
+  - hash:
+      serializedVersion: 2
+      Hash: d452b4ce4b4cca771c54091cc2623c68
+    assemblyName: DOTweenPro.dll
+    namespaceName: DG.Tweening
+    className: DOTweenVisualManager
+  - hash:
+      serializedVersion: 2
+      Hash: fd77c7be49452cc85636e35a14a6bf1e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ToggleSwitcher
   - hash:
       serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
@@ -1515,7 +1602,7 @@ ScriptsOnlyBuild:
     className: PixelPerfectCamera
   - hash:
       serializedVersion: 2
-      Hash: a48e779258ab3fb2b0ffed82b11c4ccc
+      Hash: 4abf6be9bd09a0d2d5d9cce18500b0a3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TakeSnap
@@ -1615,20 +1702,8 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 792b5c9d895b924c9b1cc1da9b019e70
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: FrameHandler
-  - hash:
-      serializedVersion: 2
-      Hash: fd77c7be49452cc85636e35a14a6bf1e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ToggleSwitcher
   platform: 20
   scenePathNames:
   - Assets/Scenes/FaceTracker.unity
   - Assets/Scenes/MultiImageTracker.unity
-  playerPath: C:/Users/jerec/Desktop/Side Projects/SHOOR/_Git_Projects/PruAR/_Builds/PruAR
+  playerPath: D:/UnityHub/UnityGames/PrulifeAR/web

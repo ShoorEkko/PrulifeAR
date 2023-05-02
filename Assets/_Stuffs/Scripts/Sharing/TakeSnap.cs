@@ -14,6 +14,9 @@ public class TakeSnap : MonoBehaviour
     public UnityEvent OnSnapShared = new UnityEvent();
     public UnityEvent OnSharePanelClosed = new UnityEvent();
 
+    [SerializeField] CameraManager cameraManager;
+
+
     private void Start()
     {
         ZSaveNShare.Initialize();
@@ -21,6 +24,7 @@ public class TakeSnap : MonoBehaviour
 
     public void TakeSnapshot()
     {
+        //cameraManager.MoveFrames();
         ZSaveNShare.RegisterSNSCallbacks(OnSaved, OnShared, OnPromptClosed);
         StartCoroutine(ZSaveNShare.TakeSnapshot(OnSnapshotCaptured, encodeQuality));
     }
@@ -45,6 +49,7 @@ public class TakeSnap : MonoBehaviour
 
     public void OnPromptClosed()
     {
+        cameraManager.ResetFrames();
         Debug.Log("Save and share prompt closed");
         OnSharePanelClosed.Invoke();
         ZSaveNShare.DeregisterSNSCallbacks(OnSaved, OnShared, OnPromptClosed);

@@ -81,7 +81,6 @@
 -define:NET_STANDARD_2_1
 -define:NETSTANDARD
 -define:NETSTANDARD2_1
--define:UNITY_PRO_LICENSE
 -define:ENABLE_CUSTOM_RENDER_TEXTURE
 -define:ENABLE_DIRECTOR
 -define:ENABLE_LOCALIZATION
@@ -92,6 +91,9 @@
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/Plugins/Demigiant 1/DemiLib/Core/DemiLib.dll"
+-r:"Assets/Plugins/Demigiant 1/DOTween/DOTween.dll"
+-r:"Assets/Plugins/Demigiant 1/DOTweenPro/DOTweenPro.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/mscorlib.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.ComponentModel.Composition.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/NetStandard/compat/2.1.0/shims/netfx/System.Core.dll"
@@ -278,8 +280,8 @@
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/PlaybackEngines/WebGLSupport/Managed/UnityEngine.WebGLModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/PlaybackEngines/WebGLSupport/Managed/UnityEngine.WindModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.15f1/Editor/Data/PlaybackEngines/WebGLSupport/Managed/UnityEngine.XRModule.dll"
--r:"C:/Users/jerec/Desktop/Side Projects/SHOOR/_Git_Projects/PruAR/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/AOT/Newtonsoft.Json.dll"
--r:"C:/Users/jerec/Desktop/Side Projects/SHOOR/_Git_Projects/PruAR/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
+-r:"D:/UnityHub/UnityGames/PrulifeAR/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/AOT/Newtonsoft.Json.dll"
+-r:"D:/UnityHub/UnityGames/PrulifeAR/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"Library/Bee/artifacts/2000b0aP.dag/com.zappar.sns.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aP.dag/Unity.2D.PixelPerfect.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aP.dag/Unity.Recorder.Base.ref.dll"
@@ -294,6 +296,20 @@
 -r:"Library/Bee/artifacts/2000b0aP.dag/Unity.VisualScripting.State.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aP.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aP.dag/Zappar.UAR.ref.dll"
+"Assets/Plugins/Demigiant 1/DOTween/Modules/DOTweenModuleAudio.cs"
+"Assets/Plugins/Demigiant 1/DOTween/Modules/DOTweenModuleEPOOutline.cs"
+"Assets/Plugins/Demigiant 1/DOTween/Modules/DOTweenModulePhysics.cs"
+"Assets/Plugins/Demigiant 1/DOTween/Modules/DOTweenModulePhysics2D.cs"
+"Assets/Plugins/Demigiant 1/DOTween/Modules/DOTweenModuleSprite.cs"
+"Assets/Plugins/Demigiant 1/DOTween/Modules/DOTweenModuleUI.cs"
+"Assets/Plugins/Demigiant 1/DOTween/Modules/DOTweenModuleUnityVersion.cs"
+"Assets/Plugins/Demigiant 1/DOTween/Modules/DOTweenModuleUtils.cs"
+"Assets/Plugins/Demigiant 1/DOTweenPro/DOTweenAnimation.cs"
+"Assets/Plugins/Demigiant 1/DOTweenPro/DOTweenDeAudio.cs"
+"Assets/Plugins/Demigiant 1/DOTweenPro/DOTweenDeUnityExtended.cs"
+"Assets/Plugins/Demigiant 1/DOTweenPro/DOTweenProShortcuts.cs"
+"Assets/Plugins/Demigiant 1/DOTweenPro/DOTweenTextMeshPro.cs"
+"Assets/Plugins/Demigiant 1/DOTweenPro/DOTweenTk2d.cs"
 "Assets/Plugins/GetSocialCapture/Scripts/GetSocialCapture.cs"
 "Assets/Plugins/GetSocialCapture/Scripts/GetSocialCapturePreview.cs"
 "Assets/Plugins/GetSocialCapture/Scripts/Internal/Gif/GeneratorWorker.cs"

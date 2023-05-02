@@ -25,12 +25,12 @@ public class ButtonManager : MonoBehaviour
 
     public void TakeRecord()
     {
-        cameraManager.StartRecording();
+        //cameraManager.StartRecording();
     }
 
     public void ShareToTwitter()
     {
-        cameraManager.TwitterShare();
+        //cameraManager.TwitterShare();
     }
 
     public void ShareToInstagram()
